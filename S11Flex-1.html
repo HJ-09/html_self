@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex-self-1</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #Apple{
+            background-color: rgba(255, 255, 255, 0.37);
+            position: sticky;
+            top: 0;
+            font-size: 12px;
+            height: fit-content;
+        }
+        ul.menu{
+            display: flex;
+            justify-content: center;
+        }
+        .menu>li{
+            display: inline-block;
+            padding:.5em 1em;
+            margin: 0 2em;
+        }
+        .menu>li>a{
+            color: grey;
+            text-decoration: none;
+        }
+        .img{
+            width: auto;
+            height: 15px;
+
+        }
+
+        .box{
+            background-color: rgba(206, 214, 230, 0.25);
+            height: 40em;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+        .box2{
+            background-color: #caecff;
+            height: 40em;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav id="Apple">
+        <div class="BigMenu">
+            <ul class="menu">
+                <li>
+                <a href="https://www.apple.com/"><img src="./img/apple로고.png" class="img"></a>
+                </li>
+                <li><a href="https://www.apple.com/store">Store</a></li>
+                <li><a href="https://www.apple.com/mac/">Mac</a></li>
+                <li><a href="https://www.apple.com/ipad/">iPad</a></li>
+                <li><a href="https://www.apple.com/iphone/">iPhone</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="box">
+        <img src="./img/ddd.png" style="height: 40em">
+    </div>
+
+    <div class="box2">
+
+    </div>
+</body>
+</html>

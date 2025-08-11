@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Float-self</title>
+    <style>
+        /*과제 2*/
+        .box{
+            display: inline-block;
+            height: 4em;
+            width: 50%;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 20px 10px;
+        }
+        /*과제 3*/
+        #BigMenu{
+            background-color: gold;
+            position: sticky;
+            top: 0;
+        }
+        .submenu>li{
+            display: inline-block;
+            padding: 0 15px;
+        }
+        .submenu>li:hover {
+            background-color: lightgray;
+        }
+        .submenu{
+            list-style: none;
+            padding: 1em;
+        }
+        .submenu>li>a{
+            color: black;
+            text-decoration: none;
+        }
+        .submenu>li>a:active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>과제 1</h2>
+    <div>
+        <img src="./img/라쿤.jpg"
+             style="width: 150px; float: left; margin-right: 10px; border: 1px darkgray dashed">
+        <strong>R A C C O O N</strong>
+        'procyon lotor'는 '씻는 곰'이라는 의미로, 물건을 물에 담그는 습관 때문에 붙여진 이름이다.
+        'raccoon'은 인디언 말로 '냄새를 찾는 손'이라는 의미이다. 뾰족한 주둥이에 눈 주위로 나있는 굵고 검은 무늬가 특징이다.
+        윗털은 길고, 윗털 아래로 회갈색의 두꺼운 밑털이 자란다. 꼬리에는 검은색 혹은 갈색의 고리 무늬가 5~10개 정도 있다.
+        수컷이 암컷보다, 북쪽에 분포하는 개체가 남쪽에 분포하는 개체보다 크다.
+        지역에 따라 무게 차이가 크다. 적게는 2kg에서 많게는 12kg까지 나가는 개체도 있다.
+        짝짓기 시기는 북미에서는 2~3월, 남미에서는 7~9월이다. 새끼는 보통 3~4마리, 적게는 1마리, 많게는 7마리까지 낳을 수도 있다.
+        심한 스트레스를 받으면 깊은 물 속으로 들어간다. 수영실력이 뛰어나다.
+    </div>
+
+    <h2>과제 2</h2>
+
+    <div style="width: 100%">
+        <div class="box" style="float: left; background-color: darkgray">
+            왼쪽 영역입니다. 이 박스는 화면의 50%의 너비를 차지하고 있는 회색 배경입니다.
+        </div>
+        <div class="box" style="float:right; background-color: lightpink">
+            오른쪽 영역입니다. 이 박스는 화면의 50%의 너비를 차지하고 있는 분홍색 배경입니다.
+        </div>
+        <div class="box" style="clear: both"></div>
+    </div>
+    
+    <h2>과제 3</h2>
+    <nav id="BigMenu">
+        <div class="menu">
+            <ul class="submenu">
+                <li><a href="#">메뉴 1</a></li>
+                <li><a href="#">메뉴 2</a></li>
+                <li><a href="#">메뉴 3</a></li>
+                <li><a href="#">메뉴 4</a></li>
+                <li><a href="#">메뉴 5</a></li>
+            </ul>
+        </div>
+    </nav>
+<p style="height: 2000px"></p>
+</body>
+</html>

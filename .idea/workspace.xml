@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41161192-c667-485f-8e95-f8ad076e0782" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/S09MenuBar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/S10Float.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/S11Flex-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/apple로고.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/ddd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/리트리버.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,13 +39,14 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "JavaScript 디버그.S04.html.executor": "Run",
+    "JavaScript 디버그.S09MenuBar.html.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/kosmo/WebstormProjects/P_html",
+    "last_opened_file_path": "C:/Users/kosmo/WebstormProjects/P_html/img",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -55,6 +60,16 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kosmo\WebstormProjects\P_html\img" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="S09MenuBar.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/P_html/S09MenuBar.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript 디버그.S09MenuBar.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -71,7 +86,8 @@
       <option name="presentableId" value="Default" />
       <updated>1754553373427</updated>
       <workItem from="1754553374467" duration="5064000" />
-      <workItem from="1754614245195" duration="11076000" />
+      <workItem from="1754614245195" duration="12110000" />
+      <workItem from="1754872440974" duration="10573000" />
     </task>
     <servers />
   </component>
