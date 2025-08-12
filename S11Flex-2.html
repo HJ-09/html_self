@@ -4,10 +4,98 @@
     <meta charset="UTF-8">
     <title>Flex-self-2</title>
     <style>
+        #gallery{
+            display: flex;
+            justify-content: center;
+        }
+        #gallery img{
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin: 0 5px;
+            transition: 0.3s ease;
+        }
+        #gallery .box{
+            display: flex;
+            flex-basis: auto;
+            border: 1px #000037 solid;
+            padding: 5px;
+            width: 700px;
+            overflow-x: scroll;
+        }
+        #gallery .box::-webkit-scrollbar{
+            height: 10px;
+        }
+        #gallery .box::-webkit-scrollbar-thumb{
+            background: #aaa;
+        }
+        #gallery .box::-webkit-scrollbar-thumb:hover{
+            background: #dd1e7f;
+        }
+        h2{
+            color: #0e3980;
+            display: flex;
+            justify-content: center;
+            font-size: 35px;
+            font-family: 'Oswald', sans-serif;
+        }
+        .box>a{
+            text-decoration: none;
+            color: black;
+            position: relative;
 
+            display: inline-block;
+        }
+        .box>a .text{
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: rgba(255, 255, 255, 1);
+
+            text-align: center;
+            font-family: 'Black Han Sans', sans-serif;
+            font-size: 22px;
+
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        .box>a:hover img{
+            opacity: 0.5;
+        }
+        .box>a:hover .text{
+            opacity: 1;
+        }
     </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    <h2>휴양지 Gallery</h2>
+    <section id="gallery">
+        <div class="box">
+            <a href="https://travel.naver.com/overseas/GRATN3369820/poi/summary"><img src="img/그리스.jpg" alt="휴양지 추천 그리스">
+                <span class="text">그리스</span></a>
+            <a href="https://travel.naver.com/overseas/MYBKI9696088/poi/summary"><img src="img/말레이시아.jpg" alt="휴양지 추천 말레이시아">
+                <span class="text">말레이시아</span></a>
+            <a href="https://travel.naver.com/overseas/MU194293816/city/summary"><img src="img/모리셔스.jpg" alt="휴양지 추천 모리셔스">
+                <span class="text">모리셔스</span></a>
+            <a href="https://travel.naver.com/overseas/VNDAD2255351/poi/summary"><img src="img/베트남.jpg" alt="휴양지 추천 베트남">
+                <span class="text">베트남</span></a>
+            <a href="https://travel.naver.com/overseas/ESSCT187482/city/summary"><img src="img/스페인.jpg" alt="휴양지 추천 스페인">
+                <span class="text">스페인</span></a>
+            <a href="https://travel.naver.com/overseas/IT187768/country/summary"><img src="img/이탈리아.jpg" alt="휴양지 추천 이탈리아">
+                <span class="text">이탈리아</span></a>
+            <a href="https://travel.naver.com/overseas/PF710311415/city/summary"><img src="img/타히티.jpg" alt="휴양지 추천 타히티">
+                <span class="text">타히티<br>보라보라섬</span></a>
+            <a href="https://travel.naver.com/overseas/THCNX293917/city/summary"><img src="img/태국.jpg" alt="휴양지 추천 태국">
+                <span class="text">태국</span></a>
+        </div>
+    </section>
 </body>
 </html>

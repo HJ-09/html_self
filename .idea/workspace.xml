@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41161192-c667-485f-8e95-f8ad076e0782" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/S11Flex-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/그리스.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/말레이시아.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/모리셔스.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/베트남.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/스페인.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/이탈리아.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/타히티.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/태국.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/S11Flex-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/S11Flex-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/apple로고.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/apple로고.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/apple로고.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/S11Flex-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/S11Flex-2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +92,7 @@
       <workItem from="1754553374467" duration="5064000" />
       <workItem from="1754614245195" duration="12110000" />
       <workItem from="1754872440974" duration="10744000" />
-      <workItem from="1754958987565" duration="1742000" />
+      <workItem from="1754958987565" duration="19193000" />
     </task>
     <servers />
   </component>
