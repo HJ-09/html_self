@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>TransiTrans-self</title>
+    <style>
+        .card{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 8rem;
+            height: 8rem;
+            border: 1px solid;
+            color: silver;
+
+            transition: transform .5s ease-in;
+        }
+        .card:hover{
+            transform: translateY(-8px);
+            box-shadow: 10px 10px 30px #000037;
+            transition: box-shadow .3s ease-in;
+        }
+
+        .flip{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 8rem;
+            height: 8rem;
+            border: 1px solid;
+            color: silver;
+
+            transition: transform 0.8s ease;
+        }
+        .flip:hover{
+            transform: rotateY(180deg);
+        }
+        .flip-b{
+            backface-visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h4>1. 카드 리프트 효과</h4>
+    <div class="card">
+        <b>C A R D</b>
+    </div>
+
+    <h4>2. 카드 플립(2D 전용)</h4>
+    <div class="flip">
+        <div class="flip-f">카 드</div>
+        <div class="flip-b">플 립</div>
+    </div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

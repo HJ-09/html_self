@@ -3,8 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Pseudo-self</title>
+    <style>
+        h2::before{
+            content: "★ ";
+            color: silver;
+        }
+        .two::after{
+            content: "  →";
+        }
+        .two:hover{
+            color: blue;
+        }
+        .three::first-letter{
+            color: red;
+            font-weight: bold;
+            font-size: 2em;
+        }
+        .four::first-line{
+            color: blue;
+            background-color: yellow;
+        }
+    </style>
 </head>
 <body>
+    <h2>1. ::before로 꾸미기</h2>
+
+    <h2>2. ::after로 꾸미기</h2>
+    <button class="two">버튼</button>
+
+    <h2>3. ::first-letter 스타일링</h2>
+    <p class="three">모든 단락의 첫 글자를 2배로?</p>
+    <p class="three">성공?</p>
+    <p class="three">HTML CSS</p>
+
+    <h2>4. ::first-line 스타일링</h2>
+    <div></div>
+
+
 
 </body>
 </html>

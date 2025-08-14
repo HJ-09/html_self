@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Transition-self</title>
+    <style>
+        body{
+            font-family: 'Oswald', sans-serif;
+        }
+        .btn{
+            display: flex;
+            width: 6em;
+            height: 2em;
+            border: 1px #aaaaaa solid;
+            border-radius: 1px;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn:hover{
+            transition: border-radius 0.2s ease;
+            border: 1px #dd1e7f dashed;
+            border-radius: 5px;
+            background-color: lightpink;
+            color: white;
+        }
+        .btn:hover::after{
+            content: "😘";
+        }
+
+        .card{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 10em;
+            height: 2em;
+            border: 1px #999999 solid;
+            background-color: #eeeeee;
+        }
+        .card:hover{
+            transform: translateY(-8px);
+            box-shadow: 8px 5px 5px #000037;
+            transition: box-shadow 0.5s ease-out;
+        }
+
+        .menu{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 10em;
+            height: 3em;
+            border: 1px solid #000037;
+            border-radius: 3px;
+            transition: transform .1s ease-in;
+        }
+        .menu:hover, .menu:focus{
+            transform: translateY(-3px);
+            background-color: #caecff;
+        }
+
+        .fast-soft{
+            width: 11rem;
+            height: 3rem;
+            border: 1px silver solid;
+            border-radius: 3px;
+            color: #818181;
+            background-color: white;
+            font-weight: bold;
+            font-size: 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: transform 5s cubic-bezier(.11, .57, .39, -.06);
+        }
+        .fast-soft:active{
+            border: 1px white dashed;
+            color: white;
+            background-color: #818181;
+            transform: scale(1.2);
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h3>1. 버튼 색상과 border-radius가 0.2초 동안 바뀌도록 트랜지션 설정</h3>
+    <button class="btn">버튼</button>
+
+    <h3>2. 카드에 hover시 transform: translateY(-8px), box-shadow 변경(0.3초 ease-out)</h3>
+    <div class="card">transform/ box-shadow</div>
+
+    <h3>3. 메뉴 항목에 hover 지연 0.1초와 ease-in 적용, focus 시에도 동일 동작</h3>
+    <div class="menu">menu, focus</div>
+
+    <h3>4. cubic-bezier로 "빠르게 시작-매우 부드럽게 멈춤" 곡선을 만들고 적용</h3>
+    <button class="fast-soft">빠르고 부드럽게 누르기</button>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
