@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>과제5</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0 1em;
+        }
+        .gradient-wrap{
+            background-image: linear-gradient(to right, lightgray 0% 20%, red 20% 40%, orange 40% 60%, skyblue 60% 80%, darkblue 80% 100%);
+            background-size: 40vw;
+            height: 5em;
+            /*background-position-x: 20vw;*/
+            background-repeat: no-repeat;
+            width: 10vw;
+            overflow: hidden;
+            margin: 0 auto; /* 중앙으로.. */
+            animation: back-move 2s infinite alternate steps(6);
+        }
+        @keyframes back-move {
+            to{
+                background-position-x: -35vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h3>스프라이트 느낌의 배경</h3>
+    <div class="gradient-wrap"></div>
+
+
+</body>
+</html>

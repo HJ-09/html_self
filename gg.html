@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .rainbow-box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 1px solid lightgray;
+            border-radius: 20px;
+            animation-name: rainbow;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        @keyframes rainbow {
+            0%{
+                background-color: red;
+                transform: scale(1);
+            }
+            17%{
+                background-color: orange;
+                transform: scale(1.05);
+            }
+            34%{
+                background-color: yellow;
+                transform: scale(1);
+            }
+            51%{
+                background-color: green;
+                transform: scale(1.05);
+            }
+            68%{
+                background-color: blue;
+                transform: scale(1);
+            }
+            85%{
+                background-color: navy;
+                transform: scale(1.05);
+            }
+            100%{
+                background-color: purple;
+                transform: scale(1);
+            }
+        }
+    </style>
+    <style>
+        .typed{
+            font-size: 2em;
+            border: 2px solid silver;
+            padding: .2em;
+            background-color: #ffe9ee;
+            border-right-width: .4em;
+            width: 0ch;
+            display: inline-block;
+            height: 3ex;
+            white-space: nowrap; /* 글자가 밑으로 떨어지지 않고, 오른쪽으로 정렬유지. */
+            overflow: hidden;
+            /*transition: width 5s steps(17);*/
+            animation: typing 4s steps(13) infinite alternate;
+        }
+        /*.typed:hover{*/
+        /*    width: 17ch;*/
+        /*}*/
+        @keyframes typing {
+            to{ /* from 0, to 100 */
+                width: 18ch;
+            }
+        }
+        .spot{
+            width: .2em;
+            height: 2.5em;
+            background-color: #ff0025;
+            display: inline-block;
+            position: relative;
+            top: -1em;
+            left: -.8em;
+            opacity: 0;
+            animation: blink .5s infinite steps(3);
+        }
+        @keyframes blink {
+            to{
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>색깔박스</h2>
+    <div>
+        <div class="rainbow-box">
+
+        </div>
+    </div>
+
+    <h2>타자기효과</h2>
+    <div>
+        <span class="typed">
+            Hello css animation
+        </span>
+        <span class="spot"></span>
+    </div>
+
+    <style>
+        .loading-dots>span{
+            width: 1em;
+            height: 1em;
+            display: inline-block;
+            background-color: darkblue;
+            border-radius: 50%; /*동그라미*/
+            animation: move-dot .5s infinite ease alternate;
+            margin: 0 .2em;
+        }
+        .loading-dots>span:nth-child(2){
+            animation-delay: .1s;
+        }
+        .loading-dots>span:nth-child(3){
+            animation-delay: .2s;
+        }
+        @keyframes move-dot {
+            0%{
+                transform: translateY(0);
+                background-color: darkblue;
+            }
+            100%{
+                transform: translateY(-.7em);
+                background-color: lightblue;
+            }
+        }
+    </style>
+    <h2>로딩 애니메이션</h2>
+    <div class="loading-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
