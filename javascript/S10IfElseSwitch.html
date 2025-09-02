@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h4>문제 1. 점수 등급 출력</h4>
+    <script>
+        let score=79;
+        let grade;
+        if (score<=100 && 90<=score){
+            grade='A'
+        }else if (score>=80){
+            grade='B'
+        }else if (score>=70){
+            grade='C'
+        }else {
+            grade='F'
+        }
+        console.log(grade)
+
+        switch (Math.floor(score/10)){
+            case 10:
+            case 9 : grade='A'; break;
+            case 8 : grade='B'; break;
+            case 7 : grade='C'; break;
+            default : grade='F';
+        }
+        console.log(grade)
+    </script>
+
+    <h4>문제 2. 요일 이름 출력</h4>
+    <script>
+        let day=2;
+        switch (day){
+            case 0: dayName="일요일"; break;
+            case 1: dayName="월요일"; break;
+            case 2: dayName="화요일"; break;
+            case 3: dayName="수요일"; break;
+            case 4: dayName="목요일"; break;
+            case 5: dayName="금요일"; break;
+            case 6: dayName="토요일"; break;
+            default: dayName="다시 입력하세요."
+        }
+        console.log(dayName);
+
+        if (day===0){
+            dayName="일요일"
+        }else if (day===1){
+            dayName="월요일"
+        }else if (day===2){
+            dayName="화요일"
+        }else if (day===3){
+            dayName="수요일"
+        }else if (day===4){
+            dayName="목요일"
+        }else if (day===5){
+            dayName="금요일"
+        }else if (day===6){
+            dayName="토요일"
+        }
+        console.log(dayName)
+    </script>
+
+    <h4>문제 3. 사칙연산 계산기</h4>
+    <script>
+        let a=5;
+        let b=10;
+        let cal='+';
+        let num;
+
+        switch (cal) {
+            case '+': num=a+b; break;
+            case '-': num=a-b; break;
+            case '*': num=a*b; break;
+            case '/': num=a/b; break;
+            default: num="다시 입력하세요."
+        }
+        console.log(num)
+
+        if (cal==='+'){
+            num=a+b;
+        }else if (cal==='-'){
+            num=a-b;
+        }else if (cal==='*') {
+            num=a*b;
+        }else if(cal==='/'){
+            num=a/b;
+        }else {
+            num="다시 입력하세요.";
+        }
+        console.log(num);
+    </script>
+
+    <h4>문제 4. 달의 일수</h4>
+    <script>
+        let month=4;
+        let mm;
+
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12: mm='31일'; break;
+            case 4:
+            case 6:
+            case 9:
+            case 11: mm='30일'; break;
+            case 2: mm='28일'; break;
+            default: mm="다시 입력하세요."
+        }
+        console.log(mm);
+
+        if (month===1 || month===3 || month===5 || month===7 || month===8 || month===10 || month===12){
+            mm="31일"
+        }else if (month===4 || month===6 || month===9 || month===11){
+            mm="30일"
+        }else {
+            mm="28일"
+        }
+        console.log(mm)
+    </script>
+
+    <h4>문제 5. 짝수/홀수 판별</h4>
+    <script>
+        let k=5;
+        let t="홀수";
+        if (k%2===0){
+            t="짝수"
+        }
+        console.log(`${t}입니다.`);
+
+        let j=9;
+        switch (j%2===1){
+            case 1: t="홀수"; break;
+            default: t="짝수";
+        }
+        console.log(`${t}입니다.`)
+    </script>
+</body>
+</html>
