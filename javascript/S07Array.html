@@ -14,7 +14,7 @@
         console.log(arr2.length);
 
         const arr3=[1,2,3];
-        console.log(arr3[2]);
+        console.log(arr3[arr3.length-1]);
 
         let arr4=[]
         arr4.push(1)
@@ -59,17 +59,22 @@
         console.log(arr14.reverse()); //[3,2,1]
 
         let arr15=["cat","dog","fish"]
-        console.log(arr15.concat("bird")); //["cat","dog","fish","bird"]
+        //console.log(arr15.concat("bird")); //["cat","dog","fish","bird"]
+        arr15.push("bird") //["cat","dog","fish","bird"]
+        console.log(arr15);
 
         let arr16=[9,8,7,6]
-        console.log(arr16.slice(2,4)); //[7,6]
+        console.log(arr16.slice(2,4)); //[7,6] 이건 내 머리..ㅠ
+        console.log(arr16.slice(arr16.length-2)); //이건 선생님!
 
         let arr17=[1,2,3,4,5]
         arr17.splice(2,1); //[3] 삭제
+        //delete arr17[2]; //선생님 방식. 근데 얘는 [1,2,비어있음,4,5]
         console.log(arr17); //[1,2,4,5]
 
         let arr18=["철수","영희","민수"]
-        arr18.splice(1,1,"수지");
+        //arr18.splice(1,1,"수지");
+        arr18[1]="수지"; //선생님..!
         console.log(arr18);
 
         let arr19=["a","b","c","d"]
@@ -78,6 +83,7 @@
         let arr20=[100,200,300]
         let arr20_1=[...arr20]
         console.log(arr20_1);
+        console.log(arr20!=arr20_1); //true
 
         let arr21=[1,2,3]
         console.log([...arr21,...[4,5]]); //[1,2,3,4,5]
@@ -89,6 +95,12 @@
         console.log(arr23,arr23_1);
 
         //24번 ⇒ new Array(5)는 빈칸 5개 만들고, Array.of(5)는 인덱스 [5]를 만듦.
+
+        //25번 ⇒ ['H','e','l','l','o']
+
+        //
+
+
 
     </script>
 </body>
