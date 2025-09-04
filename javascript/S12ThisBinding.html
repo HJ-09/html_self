@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>this 바인딩</title>
+</head>
+<body>
+    <h3>1번 문제</h3>
+    <p>window 객체</p>
+
+    <h3>2번 문제</h3>
+    <p>window</p>
+
+    <h3>3번 문제</h3>
+    <p>"경민"</p>
+
+    <h3>4번 문제</h3>
+    <p>"안녕", </p>
+
+    <h3>5번 문제</h3>
+    <p>호출하는 객체가 window여서</p>
+
+    <h3>6번 문제</h3>
+    <p>200</p>
+
+    <h3>7번 문제</h3>
+    <p>undefined</p>
+
+    <h3>8번 문제</h3>
+    <p>inner()를 실행하는 객체가 없어서</p>
+
+    <h3>9번 문제</h3>
+    <p>function greet(){ <br>
+        console.log("Hello, ", this.name); <br>
+        } <br>
+        const user={name:"Kim"}; <br>
+        <br>
+        greet.call(user); //Hello, Kim</p>
+    <script>
+        function greet(){
+            console.log("Hello, ", this.name);
+        }
+        const user={name:"Kim"};
+
+        greet.call(user);
+    </script>
+
+    <h3>10번 문제</h3>
+    <p>매개변수를 지정할 때, call은 args(나열인자)로, apply는 배열로</p>
+    <p>bind는 새로운 함수를 만들어서 this 고정, call은 실행하면서 this 지정</p>
+
+    <h3>11번 문제</h3>
+    <p>function greet(){ <br>
+        console.log("Hello, ", this.name); <br>
+        } <br>
+        const user1={name:"경민"}; <br>
+        const n=greet.bind(user1); <br>
+        n(); //Hello, 경민</p>
+    <script>
+        function greet(){
+            console.log("Hello, ", this.name);
+        }
+        const user1={name:"경민"};
+        const n=greet.bind(user1);
+        n();
+    </script>
+
+    <h3>12번 문제</h3>
+    <p>"안녕,", undefined</p>
+
+    <h3>13번 문제</h3>
+    <p>me> 정의될 때 window 객체여서</p>
+    <p>화살표함수가 타입에 명시되어있지 않아서 최상위 타입인 window를 가리키기 때문에</p>
+    <!--타입이 없으면 window 안에 있다고 생각핫세욤-->
+
+    <h3>14번 문제</h3>
+    <p>me> 선언된 위치</p>
+    <p>화살표함수는 가장 가까운 타입이 지정한 this를 화살표함수의 this로 바인딩함. (==캡처)</p>
+
+    <h3>15번 문제</h3>
+    <p>안녕, 영희</p>
+    <!--타입인지 알아보기 ~> 이름이 파스칼, this유무-->
+
+    <h3>16번 문제</h3>
+    <p>상위 스코프 this가 Person의 this를 가리키기 때문에</p>
+    <p>화살표함수의 ..ㅠ?</p>
+
+    <h3>17번 문제</h3>
+    <p>플레이어: 철수</p>
+
+    <h3>18번 문제</h3>
+    <p>this를 고정해줌</p>
+
+    <h3>19번 문제</h3>
+    <p>1초마다 1씩 증가</p>
+<!--    <script>-->
+<!--        class Counter {-->
+<!--            constructor() {-->
+<!--                this.count = 0;-->
+<!--            }-->
+<!--            start() {-->
+<!--                setInterval(() => {-->
+<!--                    this.count++;-->
+<!--                    console.log(this.count);-->
+<!--                }, 1000);-->
+<!--            }-->
+<!--        }-->
+<!--        const c = new Counter();-->
+<!--        c.start();-->
+<!--    </script>-->
+
+    <h3>20번 문제</h3>
+    <p>일반 함수는 호출(실행)하는 객체의 this에 바인딩, 화살표 함수는 자신의 this는 없고, 가장 가까운 스코프의 this에 바인딩</p>
+
+
+    <h3>21번 문제</h3>
+    <p>일반함수는 변수에 참조하게 되면 객체가 window여서 undefined가 뜨고, 화살표함수는 처음 this를 캡처해서 변함이 없음.</p>
+
+    <script>
+        function User() {
+            this.name = "주헌";
+            this.greeting=function (){
+                console.log("Hello,", this.name);
+            }
+            this.arrowGreeting = () => {
+                console.log("Hello,", this.name);
+            }
+        }
+        let user2=new User();
+        user2.greeting(); //Hello, 주헌
+        user2.arrowGreeting(); //Hello, 주헌
+
+
+        let greeting=user2.greeting;
+        greeting();  //Hello, undefined
+
+        let arrowGreeting=user2.arrowGreeting;
+        arrowGreeting(); //Hello, 주헌
+    </script>
+</body>
+</html>
