@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41161192-c667-485f-8e95-f8ad076e0782" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/javascript/S14DomTraversal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascript/S13PrototypeExtends.html" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/S13PrototypeExtends.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +104,7 @@
       <workItem from="1756803721843" duration="1409000" />
       <workItem from="1756860058566" duration="10009000" />
       <workItem from="1756946837320" duration="13208000" />
-      <workItem from="1757032808804" duration="2614000" />
+      <workItem from="1757032808804" duration="10223000" />
     </task>
     <servers />
   </component>

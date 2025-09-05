@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>dom</title>
+    <style>
+        /* 시각 확인용 보조 스타일 */
+        .red { color: red; }
+        .active { font-weight: bold; }
+        .selected { outline: 2px solid #3a86ff; }
+        .open { text-decoration: underline; }
+        .hidden { opacity: .4; }
+        .highlight { background: yellow; }
+        .on{color: #dd1e7f;}
+    </style>
+</head>
+<body>
+    <h2>DOM 탐색 실습 문제</h2>
+
+    <h3><strong>1번</strong></h3>
+    <section id="q1">
+        <h3>문제 1. 첫 자식 텍스트 바꾸기</h3>
+        <p class="task">지시: 아래 <code>#card</code>의 첫 번째 자식 요소 텍스트를 <strong>“내용 C”</strong>로 바꿔라.</p>
+        <div id="card">
+            <h3>제목</h3>
+            <p>내용 A</p>
+            <p>내용 B</p>
+        </div>
+
+        <script>
+            const one=document.querySelector('#card');
+            console.log(one.firstElementChild);
+            one.firstElementChild.textContent='내용 C';
+        </script>
+    </section>
+
+    <h3><strong>2번</strong></h3>
+    <section id="q2">
+        <h3>문제 2. 마지막 자식 클래스 추가</h3>
+        <p class="task">지시: 아래 <code>#menu</code>의 마지막 자식 <code>li</code>에 클래스 <strong>red</strong>를 추가하라.</p>
+        <ul id="menu">
+            <li>홈</li>
+            <li>수업</li>
+            <li>문의</li>
+        </ul>
+
+        <script>
+            const two=document.querySelector('#menu');
+            console.log(two.lastElementChild);
+            two.lastElementChild.classList='red';
+        </script>
+    </section>
+
+    <h3><strong>3번</strong></h3>
+    <section id="q3">
+        <h3>문제 3. 형제 이전/다음 표시</h3>
+        <p class="task">지시: <code>.focus</code>에서 이전 형제엔 “<strong>(prev)</strong>”, 다음 형제엔 “<strong>(next)</strong>”를 텍스트 뒤에 추가하라.</p>
+        <div id="list">
+            <span class="item">A</span>
+            <span class="item focus">B</span>
+            <span class="item">C</span>
+        </div>
+
+    <script>
+        const three=document.querySelector('.focus');
+        console.log(three);
+        three.previousElementSibling.textContent+="(prev)";
+        three.nextElementSibling.textContent+='(next)';
+    </script>
+    </section>
+
+    <h3><strong>4번</strong></h3>
+    <section id="q4">
+        <h3>문제 4. children 인덱싱</h3>
+        <p class="task">지시: <code>#tabs</code>의 두 번째 버튼(<code>children[1]</code>)에 클래스 <strong>selected</strong>를 추가하라.</p>
+        <div id="tabs">
+            <button>탭1</button>
+            <button>탭2</button>
+            <button>탭3</button>
+        </div>
+
+    <script>
+        const four=document.querySelector('#tabs');
+        console.log(four);
+        four.children[1].classList.add('selected');
+    </script>
+    </section>
+
+    <h3><strong>5번</strong></h3>
+    <section id="q5">
+        <h3>문제 5. closest로 카드 제목 변경</h3>
+        <p class="task">지시: <code>.edit</code> 버튼에서 출발해 가장 가까운 카드의 제목(<code>.card-title</code>)을 찾아 텍스트를 <strong>“프로필(수정 모드)”</strong>로 바꿔라.</p>
+        <article class="card">
+            <header class="card-title">프로필</header>
+            <div class="card-body">
+                <button class="edit">편집</button>
+            </div>
+        </article>
+
+    <script>
+        const five=document.querySelector('.edit');
+        console.log(five);
+        const fiveOne=five.closest('.card');
+        const fiveTwo=fiveOne.querySelector('.card-title');
+        fiveTwo.textContent+='(수정 모드)';
+    </script>
+    </section>
+
+    <h3><strong>6번</strong></h3>
+    <section id="q6">
+        <h3>문제 6. contains 확인 후 텍스트 변경</h3>
+        <p class="task">지시: <code>#panel</code>이 <code>.msg</code>를 포함하면 <code>.msg</code>의 텍스트를 <strong>“안내(확인됨)”</strong>으로 바꿔라.</p>
+        <section id="panel">
+            <div class="wrap">
+                <p class="msg">안내</p>
+            </div>
+        </section>
+
+    <script>
+        const six=document.querySelector('#panel');
+        const sixOne=document.querySelector('.msg');
+        const sixTwo=six.contains(sixOne);
+        if (sixTwo==true){
+            sixOne.textContent+='(확인됨)';
+        }
+    </script>
+
+        <!--<script>
+            const six=document.querySelector('#panel');
+            const sixOne=document.querySelector('.msg');
+            if (six.contains(sixOne)){
+                sixOne.textContent+='(확인됨)';
+            }
+        </script>--> <!--gpt가 알려준 방법-->
+    </section>
+
+    <h3><strong>7번</strong></h3>
+    <section id="q7">
+        <h3>문제 7. matches로 조건부 클래스</h3>
+        <p class="task">지시: <code>#box</code>의 첫 자식이 <code>.title</code>에 매칭되면 해당 요소에 클래스 <strong>highlight</strong>를 추가하라.</p>
+        <div id="box">
+            <h4 class="title">공지</h4>
+            <h4>일반</h4>
+        </div>
+
+    <script>
+        const seven=document.querySelector('#box');
+        console.log(seven.firstElementChild.matches('.title'));
+        if (seven.firstElementChild.matches('.title')){
+            seven.firstElementChild.classList.add('highlight');
+        }
+    </script>
+    </section>
+
+    <h3><strong>8번</strong></h3>
+    <section id="q8">
+        <h3>문제 8. classList 토글</h3>
+        <p class="task">지시: 아래 <code>#notice</code> 내부 <code>.desc</code>의 클래스 <strong>on</strong>을 토글하라.</p>
+        <div id="notice">
+            <p class="desc on">보이는 설명</p>
+        </div>
+
+        <script>
+            const eight=document.querySelector('#notice');
+            console.log(eight.querySelector('.desc'));
+            const eightOne=eight.classList.toggle('on');
+            console.log(eightOne);
+        </script>
+    </section>
+
+    <h3><strong>9번</strong></h3>
+    <section id="q9">
+        <h3>문제 9. 범위 한정으로 첫 아이템 선택</h3>
+        <p class="task">지시: <code>.section</code> 요소를 시작점으로 내부 리스트의 첫 번째 <code>.item</code>에 클래스 <strong>selected</strong>를 추가하라. (전역 검색 금지)</p>
+        <section class="section">
+            <div class="toolbar"><button class="btn">A</button></div>
+            <ul class="list">
+                <li class="item">1</li>
+                <li class="item">2</li>
+            </ul>
+        </section>
+
+        <script>
+            const nine=document.querySelector('.section');
+            nine.querySelectorAll("li")[0].classList.add("selected");
+
+
+        </script>
+    </section>
+
+    <h3><strong>10번</strong></h3>
+
+
+    <h3><strong>11번</strong></h3>
+
+
+    <h3><strong>12번</strong></h3>
+
+
+    <h3><strong>13번</strong></h3>
+
+
+    <h3><strong>14번</strong></h3>
+
+
+    <h3><strong>15번</strong></h3>
+
+
+    <h3><strong>16번</strong></h3>
+
+
+    <h3><strong>17번</strong></h3>
+
+
+    <h3><strong>18번</strong></h3>
+
+
+    <h3><strong>19번</strong></h3>
+
+
+    <h3><strong>20번</strong></h3>
+
+
+
+</body>
+</html>
