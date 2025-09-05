@@ -6,25 +6,27 @@
 </head>
 <body>
     <h4>1번</h4>
-    <p>prototype</p>
+    <p>prototype 객체</p>
 
     <h4>2번</h4>
     <p>User.prototype</p>
 
     <h4>3번</h4>
-    <p>?</p>
+    <p>User의 생성자 함수</p>
+    <p>프로토타입에는 생성자 함수가 있음</p>
 
     <h4>4번</h4>
     <p>true</p>
 
     <h4>5번</h4>
-    <p>Object</p>
+    <p>Object.prototype (그 위는 null)</p>
 
     <h4>6번</h4>
-    <p>?</p>
+    <p>인스턴스(new 연산자)의 __proto__ (생성자의 prototype)</p>
 
     <h4>7번</h4>
     <p>가능/ User의 prototype과 u1의 __proto__가 같아서</p>
+    <p>가능. 인스턴스는 자신의 __proto__를 통해 나중에 추가된 User.prototype.sayHi에도 접근한다.</p>
 
     <h4>8번</h4>
     <p>base</p>
@@ -34,12 +36,15 @@
 
     <h4>10번</h4>
     <p>?</p>
+    <p>undefined — Object.prototype 연결이 끊겨 기본 메서드 없음.</p>
 
     <h4>11번</h4>
     <p>false, true</p>
+    <p><strong>true, true</strong></p>
 
     <h4>12번</h4>
     <p>Animal{}</p>
+    <p><strong>Animal.prototype</strong></p>
 
     <h4>13번</h4>
     <p>참</p>
@@ -52,12 +57,13 @@
 
     <h4>16번</h4>
     <p>true, d.__proto__와 Date.prototype은 같은 객체를 가리키니까</p>
+    <p><strong>true — new Date() 인스턴스의 __proto__는 Date.prototype.</strong></p>
 
     <h4>17번</h4>
     <p>obj.__proto__</p>
 
     <h4>18번</h4>
-    <p></p>
+    <p><strong>Object.getPrototypeOf(obj)는 obj.__proto__를 반환하는 표준 메서드.</strong></p>
 
     <h4>19번</h4>
     <p>객체의 프로토타입 변경(obj의 prototype을 proto로 변경)</p>
