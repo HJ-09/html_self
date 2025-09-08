@@ -28,10 +28,15 @@
         </div>
 
         <script>
-            const one=document.querySelector('#card');
-            console.log(one.firstElementChild);
-            one.firstElementChild.textContent='내용 C';
+            const one=document.querySelector('#card'); //==document.getElementById('card');
+            console.log(one.firstElementChild); //
+            one.firstElementChild.textContent='내용 C'; //== one.firstElementChild.innerText='내용 C';
         </script>
+<!--        <script>-->
+<!--            //let oneO=document.querySelector('#card>:nth-child(1)'); //이렇게 해도 됨.-->
+<!--            let oneO=document.querySelector('#card>:first-child'); //이렇게 해도 됨.-->
+<!--            oneO.innerText='내용 3'-->
+<!--        </script>-->
     </section>
 
     <h3><strong>2번</strong></h3>
@@ -49,6 +54,12 @@
             console.log(two.lastElementChild);
             two.lastElementChild.classList='red';
         </script>
+<!--        <script>-->
+<!--            const two=document.querySelector('#menu');-->
+<!--            console.log(two.lastElementChild);-->
+<!--            two.lastElementChild.classList='red'; //==two.lastElementChild.classList.add('red');-->
+<!--            console.log(two.children[0].classList) //유사배열-->
+<!--        </script>-->
     </section>
 
     <h3><strong>3번</strong></h3>
@@ -61,12 +72,12 @@
             <span class="item">C</span>
         </div>
 
-    <script>
-        const three=document.querySelector('.focus');
-        console.log(three);
-        three.previousElementSibling.textContent+="(prev)";
-        three.nextElementSibling.textContent+='(next)';
-    </script>
+        <script>
+            const three=document.querySelector('.focus'); //==document.querySelector('#list>.focus');
+            console.log(three);
+            three.previousElementSibling.textContent+="(prev)"; //textContent 대신에 innerText 해도 됌. innerHTML도 되는 듯..?
+            three.nextElementSibling.textContent+='(next)';
+        </script>
     </section>
 
     <h3><strong>4번</strong></h3>
@@ -83,6 +94,10 @@
         const four=document.querySelector('#tabs');
         console.log(four);
         four.children[1].classList.add('selected');
+
+        //== document.querySelector('#tabs').children[1].classList.add('selected');
+        //== document.querySelector('#tabs>button:nth-child(2)').classList.add('selected');
+        //== document.querySelector('#tabs>:nth-child(2)').classList.add('selected');
     </script>
     </section>
 
@@ -96,14 +111,34 @@
                 <button class="edit">편집</button>
             </div>
         </article>
+        <article class="card">
+            <header class="card-title">프로필</header>
+            <div class="card-body">
+                <button class="edit">편집</button>
+            </div>
+        </article>
 
-    <script>
-        const five=document.querySelector('.edit');
-        console.log(five);
-        const fiveOne=five.closest('.card');
-        const fiveTwo=fiveOne.querySelector('.card-title');
-        fiveTwo.textContent+='(수정 모드)';
-    </script>
+<!--    <script>-->
+<!--        const five=document.querySelector('.edit');-->
+<!--        console.log(five);-->
+<!--        const fiveOne=five.closest('.card');-->
+<!--        const fiveTwo=fiveOne.querySelector('.card-title');-->
+<!--        fiveTwo.textContent+='(수정 모드)';-->
+<!--    </script>-->
+<!--    <script>-->
+<!--        const five=document.querySelector('#q5 button.edit');-->
+<!--        five.closest('.card').querySelector('.card-title').innerText+=' (수정모드)';-->
+
+<!--    </script>-->
+        <script>
+            let editBtns=document.querySelectorAll('.card .edit');
+            console.log(editBtns);
+            for (let btn of editBtns){
+                btn.onclick=()=>{
+                btn.closest('.card').querySelector('.card-title').innerText+='(편집모드)'
+                }
+            }
+        </script>
     </section>
 
     <h3><strong>6번</strong></h3>
@@ -120,7 +155,7 @@
         const six=document.querySelector('#panel');
         const sixOne=document.querySelector('.msg');
         const sixTwo=six.contains(sixOne);
-        if (sixTwo==true){
+        if (sixTwo==true){ //==true 안 써도 됨. 이미 sixTwo가 true여서 그냥 sixTwo만 써도 조건식 만족
             sixOne.textContent+='(확인됨)';
         }
     </script>
@@ -132,6 +167,16 @@
                 sixOne.textContent+='(확인됨)';
             }
         </script>--> <!--gpt가 알려준 방법-->
+
+
+    <!--<script>
+        //부모요소.contains(자식요소)
+        const sixx=document.querySelector('#panel .msg');
+        console.log(sixx); //contains 안 써도 true
+        if (sixx) sixx.innerText+='확인됨'; //== sixx && (sixx.innerText+='(확인)');
+        //?. :필드가 있으면
+        // && : 있을 때 까지 실행(필드검사)
+    </script>--> <!--선생님-->
     </section>
 
     <h3><strong>7번</strong></h3>
@@ -189,7 +234,19 @@
     </section>
 
     <h3><strong>10번</strong></h3>
+    <section id="q10">
+        <h3>문제 10. 텍스트 노드 건너뛰기</h3>
+        <p class="task">지시: 요소 전용 형제 이동을 사용하여 두 번째 <code>&lt;span&gt;</code>의 텍스트 뒤에 <strong>“!”</strong>를 추가하라. (<code>nextElementSibling</code> 사용)</p>
+        <div id="wrap">
+            <span>X</span>
+            <!-- 주석 -->
+            <span>Y</span>
+        </div>
 
+        <script>
+
+        </script>
+    </section>
 
     <h3><strong>11번</strong></h3>
 
