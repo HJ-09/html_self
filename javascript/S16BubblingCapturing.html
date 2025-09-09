@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>버블링 캡처링 문제</h2>
+    <section>
+        <h3>문제 1</h3>
+        <p>DOM 이벤트 전파 단계 중, 문서 최상위에서 시작해 타깃 요소까지 내려가는 과정을 무엇이라고 하는가?</p>
+        <!--캡처링-->
+        <h3>문제 2</h3>
+        <p>기본적으로 브라우저는 어떤 전파 단계에서 이벤트를 감지하는가?</p>
+        <!--버블링-->
+        <h3>문제 3</h3>
+        <p><code>event.target</code>과 <code>event.currentTarget</code>의 차이를 간단히 설명하라.</p>
+        <!--event.target은 이벤트가 실제로 발생한 곳, event.currentTarget은 리스너가 달린 곳-->
+        <h3>문제 4</h3>
+        <p>이벤트가 더 이상 부모로 전파되지 않도록 막을 때 사용하는 메서드는 무엇인가?</p>
+        <!--event.stopPropagation()-->
+        <h3>문제 5</h3>
+        <p>이벤트 위임(Event Delegation)을 사용할 때, 부모 요소에 이벤트 핸들러를 달아도 자식 요소의 이벤트를 처리할 수 있는 이유는 무엇인가?</p>
+        <!--버블링 때문에-->
+    </section>
+
+
+    <!--<ul id="menu" style="border: #dd1e7f 1px dashed">
+        <li>햄버거</li>
+        <li>피자</li>
+        <li>초밥</li>
+        <li>라면</li>
+    </ul>
+    <script>
+        const menu=document.getElementById('menu');
+        menu.addEventListener('click', (e)=>{
+            if (e.target.tagName==='LI'){ //tagName은 항상 대문자로 반환!!
+                alert('선택하신 메뉴: '+e.target.innerText);
+            }
+        })
+    </script>-->
+
+    <!--<div id="parent">
+        <button id="child">클릭!</button>
+    </div>
+
+    <script>
+        const parent = document.getElementById("parent");
+        const child = document.getElementById("child");
+
+        parent.addEventListener("click", (e) => {
+            console.log("target:", e.target.id);
+            console.log("currentTarget:", e.currentTarget.id);
+        });
+
+        child.addEventListener("click", (e) => {
+            console.log("child target:", e.target.id);
+            console.log("child currentTarget:", e.currentTarget.id);
+            //e.stopPropagation();
+        });
+    </script>-->
+
+    <!--<ul id="menu">
+        <li>사과</li>
+        <li>바나나</li>
+        <li>포도</li>
+    </ul>
+
+    <script>
+        const menu = document.getElementById("menu");
+
+        // 부모 <ul>에 이벤트 위임
+        menu.addEventListener("click", (e) => {
+            console.log("target:", e.target.tagName, e.target.textContent);
+            console.log("currentTarget:", e.currentTarget.tagName, e.currentTarget.id);
+        });
+    </script>-->
+</body>
+</html>

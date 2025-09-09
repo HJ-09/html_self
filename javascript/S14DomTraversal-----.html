@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document와 Dom 탐색--</title>
+    <style>
+            /* 시각 확인용 보조 스타일 */
+        .red { color: red; }
+        .active { font-weight: bold; }
+        .selected { outline: 2px solid #3a86ff; }
+        .open { text-decoration: underline; }
+        .hidden { opacity: .4; }
+        .highlight { background: yellow; }
+    </style>
+</head>
+<body>
+    <h1>DOM 탐색 실습 문제 20</h1>
+    <p>규칙: 전역 선택으로 직접 찾지 말고(예: <code>document.getElementById</code>), 컨테이너에서 시작해 <code>children</code>, <code>first/lastElementChild</code>, <code>next/previousElementSibling</code>, <code>closest</code>, <code>querySelector(All)</code> 등을 활용해 “관계 기반”으로 탐색·수정하세요.</p>
+
+    <section id="q1">
+        <h3>문제 1. 첫 자식 텍스트 바꾸기</h3>
+        <p class="task">지시: 아래 <code>#card</code>의 첫 번째 자식 요소 텍스트를 <strong>“내용 C”</strong>로 바꿔라.</p>
+        <div id="card">
+            <h3>제목</h3>
+            <p>내용 A</p>
+            <p>내용 B</p>
+        </div>
+    </section>
+    <script>
+        let cardChildLi=document.querySelector("#card>:first-child");
+        cardChildLi.innerText="내용내용C"
+    </script>
+
+    <section id="q2">
+        <h3>문제 2. 마지막 자식 클래스 추가</h3>
+        <p class="task">지시: 아래 <code>#menu</code>의 마지막 자식 <code>li</code>에 클래스 <strong>red</strong>를 추가하라.</p>
+        <ul id="menu">
+            <li>홈</li>
+            <li>수업</li>
+            <li>문의</li>
+        </ul>
+    </section>
+    <script>
+        let menu=document.querySelector("#menu");
+        // menu.children[0].className="red";
+        menu.children[0].classList.add("red");
+        console.log(menu.children[0].classList)
+        //DOMTokenList :유사 배열
+    </script>
+
+    <section id="q3">
+        <h3>문제 3. 형제 이전/다음 표시</h3>
+        <p class="task">지시: <code>.focus</code>에서 이전 형제엔 “<strong>(prev)</strong>”, 다음 형제엔 “<strong>(next)</strong>”를 텍스트 뒤에 추가하라.</p>
+        <div id="list">
+            <span class="item">A </span>
+            <span class="item focus">B</span>
+            <span class="item">C</span>
+        </div>
+        <script>
+            let focusSpan=document.querySelector("#list>.focus");
+            focusSpan.previousElementSibling.innerText+=" prev ";
+            focusSpan.nextElementSibling.innerText+=" next ";
+        </script>
+
+
+    </section>
+
+    <section id="q4">
+        <h3>문제 4. children 인덱싱</h3>
+        <p class="task">지시: <code>#tabs</code>의 두 번째 버튼(<code>children[1]</code>)에 클래스 <strong>selected</strong>를 추가하라.</p>
+        <div id="tabs">
+            <button>탭1</button>
+            <button>탭2</button>
+            <button>탭3</button>
+        </div>
+    </section>
+    <script>
+        // document.querySelector("#tabs").children[1].classList.add("selected");
+        document.querySelector("#tabs>:nth-child(2)").classList.add("selected");
+    </script>
+
+
+
+    <section id="q5">
+        <h3>문제 5. closest로 카드 제목 변경</h3>
+        <p class="task">지시: <code>.edit</code> 버튼에서 출발해 가장 가까운 카드의 제목(<code>.card-title</code>)을 찾아 텍스트를 <strong>“프로필(수정 모드)”</strong>로 바꿔라.</p>
+        <article class="card">
+            <header class="card-title">프로필</header>
+            <div class="card-body">
+                <button class="edit">편집</button>
+            </div>
+        </article>
+        <article class="card">
+            <header class="card-title">프로필</header>
+            <div class="card-body">
+                <button class="edit">편집</button>
+            </div>
+        </article>
+    </section>
+    <script>
+         let editBtns=document.querySelectorAll(".card .edit");
+         console.log(editBtns)
+         for(let btn of editBtns){
+             btn.onclick=()=>{
+                 btn.closest(".card").querySelector(".card-title")
+                     .innerText+="(편집모드)"
+             }
+         }
+
+    </script>
+    <section id="q6">
+        <h3>문제 6. contains 확인 후 텍스트 변경</h3>
+        <p class="task">지시: <code>#panel</code>의 <code>.info</code>가 <code>.msg</code>를 포함하면 <code>.msg</code>의 텍스트를 <strong>“안내(확인됨)”</strong>으로 바꿔라.</p>
+        <section id="panel">
+            <div class="wrap">
+                <p class="info">안내</p>
+                <p class="info msg">안내</p>
+                <p class="info">안내</p>
+                <p class="info msg">안내</p>
+                <p class="info">안내</p>
+                <p class="info">안내</p>
+                <p class="info msg">안내</p>
+            </div>
+        </section>
+    </section>
+    <script>
+        //?. : 필드가 있으면
+        // && : 있을때 까지 실행 (필드검사)
+
+       //부모요소.contains(자식요소) => boolean
+       //let msgP=document.querySelector("#panel .msg");
+       // if(msgP) msgP.innerText+=(" (확인됨)");
+       ///msgP && ( msgP.innerText+=(" (확인됨)") );
+       //let p=document.querySelector("#panel");
+        let infos=document.querySelectorAll("#panel .info");
+
+        for(let info of infos){
+            if(info.classList.contains("msg")){
+                info.innerText+="(확인됨)";
+            }
+        }
+
+    </script>
+
+    <section id="q7">
+        <h3>문제 7. matches로 조건부 클래스</h3>
+        <p class="task">지시: <code>#box</code>의 첫 자식이 <code>.title</code>에 매칭되면 해당 요소에 클래스 <strong>highlight</strong>를 추가하라.</p>
+        <div id="box">
+            <h4 class="title">공지</h4>
+            <h4>일반</h4>
+        </div>
+    </section>
+
+    <section id="q8">
+        <h3>문제 8. classList 토글</h3>
+        <p class="task">지시: 아래 <code>#notice</code> 내부 <code>.desc</code>의 클래스 <strong>on</strong>을 토글하라.</p>
+        <div id="notice">
+            <p class="desc on">보이는 설명</p>
+        </div>
+    </section>
+
+    <section id="q9">
+        <h3>문제 9. 범위 한정으로 첫 아이템 선택</h3>
+        <p class="task">지시: <code>.section</code> 요소를 시작점으로 내부 리스트의 첫 번째 <code>.item</code>에 클래스 <strong>selected</strong>를 추가하라. (전역 검색 금지)</p>
+        <section class="section">
+            <div class="toolbar"><button class="btn">A</button></div>
+            <ul class="list">
+                <li class="item">1</li>
+                <li class="item">2</li>
+            </ul>
+        </section>
+    </section>
+
+    <section id="q10">
+        <h3>문제 10. 텍스트 노드 건너뛰기</h3>
+        <p class="task">지시: 요소 전용 형제 이동을 사용하여 두 번째 <code>&lt;span&gt;</code>의 텍스트 뒤에 <strong>“!”</strong>를 추가하라. (<code>nextElementSibling</code> 사용)</p>
+        <div id="wrap">
+            <span>X</span>
+            <!-- 주석 -->
+            <span>Y</span>
+        </div>
+    </section>
+
+    <section id="q11">
+        <h3>★★★ 문제 11. 부모로 올라가 타이틀 수정</h3>
+        <p class="task">지시: <code>.more</code>에서 부모(<code>.body</code>)를 거쳐 카드 루트(<code>.card</code>)로 올라간 후, 그 안의 <code>.title</code>에 클래스 <strong>open</strong>을 추가하라.</p>
+        <div class="card">
+            <h3 class="title">제목1</h3>
+            <div class="body">
+                <div class="more">
+                    <button>더보기</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h3 class="title">제목2</h3>
+            <div class="body">
+                <div class="more">
+                    <button>더보기</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h3 class="title">제목3</h3>
+            <div class="body">
+                <div class="more">
+                    <button>더보기</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const moreBtns=q11.querySelectorAll('.card .more');
+        for (let btn of moreBtns){
+            btn.addEventListener('click',(e)=>{
+                //event object: 이벤트에 대한 발생정보
+                //e.target: 이벤트가 발생한 티켓
+                //e.currentTarget: 이벤트를 정의한 타겟?
+                //this (x)
+                //console.log(e.target);
+                //console.log(e.currentTarget);
+
+                let card=e.currentTarget.closest('.card');
+                card.querySelector('.title').classList.toggle('open');
+
+            })
+        }
+    </script>
+
+    <section id="q12">
+        <h3>문제 12. 특정 인덱스 자식 교체</h3>
+        <p class="task">지시: 아래 <code>#steps</code>의 두 번째 항목(<code>children[1]</code>) 텍스트를 <strong>“검토”</strong>로 바꿔라.</p>
+        <ol id="steps">
+            <li>시작</li>
+            <li>중간</li>
+            <li>종료</li>
+        </ol>
+    </section>
+    <script>
+        steps.children[1].innerText='검토';
+    </script>
+
+
+    <section id="q13">
+        <h3>★★★ 문제 13. data-* 읽고 쓰기</h3>
+        <p class="task">지시: <code>#product</code>의 <code>data-stock</code> 값을 읽어 0이면 <strong>“(품절)”</strong>, 아니면 <strong>“(재고: n)”</strong>을 <code>.name</code> 뒤에 추가하라.</p>
+        <p>
+            <button id="stockBtn">재고확인</button>
+        </p>
+        <div class="product" data-id="A-100" data-stock="7">
+            <span class="name">키보드</span>
+        </div>
+        <div class="product" data-id="A-177" data-stock="0">
+            <span class="name">모니터</span>
+        </div>
+        <div class="product" data-id="A-179" data-stock="20">
+            <span class="name">마우스</span>
+        </div>
+    </section>
+    <script>
+        const products=document.querySelectorAll('#q13 .product');
+        //console.log(products);
+
+        const stockHandler=()=>{ //this 안 쓰니까 화살표함수 써도 됌
+            for (let p of products){
+                let stock=p.dataset.stock; //console.log(stock); ⇒ 7, 0, 20
+                let nameNode=p.querySelector('.name');
+                if (stock>0){
+                    nameNode.innerText+=` (재고: ${stock})`
+                }else {
+                    nameNode.classList.add('highlight');
+                    nameNode.innerText+=` (품절)`
+                }
+            }
+        }
+        stockBtn.addEventListener('click', stockHandler);
+    </script>
+
+
+    <section id="q14">
+        <h3>문제 14. style 수정</h3>
+        <p class="task">지시: <code>.panel</code> 내부 <code>.msg</code>의 글자색을 <strong>red</strong>, 글자 크기를 <strong>20px</strong>로 바꿔라.</p>
+        <div class="panel">
+            <p class="">알림</p>
+            <p class="">알림</p>
+            <p class="msg">알림</p>
+            <p class="">알림</p>
+            <p class="msg">알림</p>
+        </div>
+    </section>
+    <script>
+        const msgs=document.querySelectorAll('#q14 .msg');
+        for (let msg of msgs){
+            //msg.style.color='red';
+            //msg.style.fontSize='20px';
+            //└─ 복수 변경을 이렇게 하는건 그다지 좋지 않음
+            //Object assign(객체.필드,{}) ⇒ 필드의 복수를 지정.. 띄용
+
+            let styleObj={
+                color:'blue',
+                fontSize:'20px'
+            }
+            Object.assign(msg.style,styleObj);
+        }
+    </script>
+
+
+    <section id="q15">
+        <h3>문제 15. innerHTML로 아이콘 삽입</h3>
+        <p class="task">지시: <code>.action</code> 버튼의 텍스트 앞에 <code>&lt;span class="icon"&gt;🗑️&lt;/span&gt;</code>을 삽입하라. (버튼을 관계 탐색으로 잡고 <code>innerHTML</code> 사용)</p>
+        <button class="action">삭제</button>
+    </section>
+
+
+
+    <section id="q16">
+        <h3>문제 16. 형제 순회로 번호 매기기</h3>
+        <p class="task">지시: 첫 번째 <code>li</code>에서 시작하여 형제 요소들을 순회하며 각각 앞에 <strong>“1. ”, “2. ”, “3. ”</strong>을 붙여라.</p>
+        <ul class="posts">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+        </ul>
+    </section>
+    <script>
+        const q16Posts=document.querySelector('.posts');
+        let n=0;
+        for (let li of q16Posts.children){
+            li.innerText=`${++n}. ${li.innerText}`
+        }
+    </script>
+
+
+    <section id="q17">
+        <h3>문제 17. closest로 라벨 표시</h3>
+        <p class="task">지시: 두 번째 입력 요소에서 출발해 가장 가까운 <code>.row</code>를 찾아 라벨 텍스트 뒤에 <strong>“(필수)”</strong>를 추가하라.</p>
+        <form class="form">
+            <label class="row">이름 <input type="text" /></label>
+            <label class="row">이메일 <input type="email" /></label>
+        </form>
+    </section>
+    <script>
+        const emailInput=document.querySelector('[type="email"]'); //[]
+        console.log(emailInput.previousSibling); //"이메일"
+        emailInput.previousSibling.textContent+='(필수)';
+
+        /*const rows=q17.querySelectorAll('.row');
+        console.log(rows[1].children); //HTMLCollection [input]
+        console.log(rows[1].firstChild); //"이메일"
+        //textNode는 innerText 못 씀. textContent 사용해야함
+        rows[1].firstChild.textContent+='(필수)';*/
+    </script>
+
+
+    <section id="q18">
+        <h3>문제 18. 특정 영역 한정 선택</h3>
+        <p class="task">지시: <code>.board</code>의 <strong>.right</strong>를 시작점으로 그 내부의 모든 <code>.cell</code> 뒤에 <strong>“(R)”</strong>을 추가하라. (전역 <code>querySelectorAll</code> 금지)</p>
+        <section class="board" style="display: flex">
+            <ul class="left"><li class="cell">L1</li><li class="cell">L2</li></ul>
+            <ul class="right"><li class="cell">R1</li><li class="cell">R2</li></ul>
+        </section>
+    </section>
+    <script>
+        const rightUl=q18.querySelector('.right'); //전역금지니까 document 사용 x
+        for (let li of rightUl.children){
+            li.innerText+='(R)';
+        }
+    </script>
+
+
+    <section id="q19">
+        <h3>문제 19. 캐러셀 인디케이터 이동</h3>
+        <p class="task">지시: 현재 <code>.active</code>를 다음 형제 <code>.dot</code>으로 이동시켜라. (마지막이면 이동하지 않아도 됨)</p>
+        <p>
+            <button id="nextDotBtn">다음 dot</button> <!-- button#nextDotBtn{다음 닷} -->
+        </p>
+        <ol class="dots">
+            <li class="dot active">•</li>
+            <li class="dot">•</li>
+            <li class="dot">•</li>
+        </ol>
+    </section>
+    <script>
+        const nextDotBtn=document.querySelector('#nextDotBtn');
+        const dotsUl=document.querySelector('#q19 .dots');
+
+        const nextDotBtnHandler=()=>{
+            let activeIndex=0;
+            for (let i=0; i<dotsUl.children.length; i++){
+                let li=(dotsUl.children[i]);
+                if (li.classList.contains("active")){
+                    activeIndex=i;
+                    li.classList.remove('active');
+                    break;
+                }
+            }
+            if (activeIndex!==dotsUl.children.length-1){
+                dotsUl.children[activeIndex+1].classList.add('active');
+            }else {
+                dotsUl.children[0].classList.add('active');
+            }
+        }
+        //nextDotBtn.addEventListener('click', nextDotBtnHandler);
+
+        const nextDotBtnHandler2=()=>{
+            let activeNode=dotsUl.querySelector('.active');
+            activeNode.classList.remove('active');
+            if (activeNode.nextElementSibling){
+                activeNode.nextElementSibling.classList.add('active');
+            }else {
+                dotsUl.children[0].classList.add('active');
+            }
+        }
+        nextDotBtn.addEventListener('click', nextDotBtnHandler2);
+    </script>
+
+
+    <section id="q20">
+        <h3>문제 20. parent→children 체인으로 타이틀 교체</h3>
+        <p class="task">지시: <code>#gallery</code>에서 <strong>부모→자식 관계만</strong> 이용해 <code>h2.title</code>을 찾아 텍스트를 <strong>“사진 모음”</strong>으로 바꿔라. (전역 선택·복잡한 CSS 선택자 금지)</p>
+        <section id="gallery">
+            <header>
+                <h2 class="title">갤러리</h2>
+            </header>
+            <div class="grid">...</div>
+        </section>
+        <script>
+            //const g=q20.querySelector('#gallery');
+            gallery.children[0].children[0].innerText='사진모음';
+        </script>
+
+    </section>
+</body>
+</html>

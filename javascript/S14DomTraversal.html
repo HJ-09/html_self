@@ -148,17 +148,30 @@
         <section id="panel">
             <div class="wrap">
                 <p class="msg">안내</p>
+                <p class="msg">안-내</p>
+                <p class="osg">안~내</p>
             </div>
         </section>
 
-    <script>
+    <!--<script>
         const six=document.querySelector('#panel');
-        const sixOne=document.querySelector('.msg');
+        const sixOne=panel.querySelectorAll('.msg');
         const sixTwo=six.contains(sixOne);
-        if (sixTwo==true){ //==true 안 써도 됨. 이미 sixTwo가 true여서 그냥 sixTwo만 써도 조건식 만족
+        if (sixTwo){ //==true 안 써도 됨. 이미 sixTwo가 true여서 그냥 sixTwo만 써도 조건식 만족
             sixOne.textContent+='(확인됨)';
         }
-    </script>
+    </script>-->
+
+        <script>
+            const panel=document.querySelector('#panel');
+            const msgs=panel.querySelectorAll('.msg');
+
+            for (let m of msgs){
+                if (panel.contains(m)){
+                    m.textContent+='(확인)';
+                }
+            }
+        </script>
 
         <!--<script>
             const six=document.querySelector('#panel');
@@ -177,6 +190,7 @@
         //?. :필드가 있으면
         // && : 있을 때 까지 실행(필드검사)
     </script>--> <!--선생님-->
+
     </section>
 
     <h3><strong>7번</strong></h3>
@@ -186,6 +200,7 @@
         <div id="box">
             <h4 class="title">공지</h4>
             <h4>일반</h4>
+<!--            <h4 class="title">공-지</h4>-->
         </div>
 
     <script>
@@ -195,42 +210,86 @@
             seven.firstElementChild.classList.add('highlight');
         }
     </script>
+    <!--<script>
+        const seven=document.querySelector('#box');
+        const sevenOne=seven.querySelectorAll('.title');
+        for (let s of sevenOne){
+            s.classList.add('highlight');
+        }
+    </script>-->
+<!--    <script>-->
+<!--        for (let h4 of box.children){-->
+<!--            if(h4.classList.contains('title')){-->
+<!--                h4.classList.add('highlight')-->
+<!--            }-->
+<!--        }-->
+<!--    </script>--> <!--선생님-->
     </section>
 
     <h3><strong>8번</strong></h3>
     <section id="q8">
         <h3>문제 8. classList 토글</h3>
         <p class="task">지시: 아래 <code>#notice</code> 내부 <code>.desc</code>의 클래스 <strong>on</strong>을 토글하라.</p>
+        <p>
+            <button id="onToggleBtn">on toggle</button>
+        </p>
         <div id="notice">
+            <p class="desc on">보이는 설명</p>
+            <p class="desc">보이는 설명 on</p>
             <p class="desc on">보이는 설명</p>
         </div>
 
+<!--        <script>-->
+<!--            const eight=document.querySelector('#notice');-->
+<!--            console.log(eight.querySelector('.desc'));-->
+<!--            const eightOne=eight.classList.toggle('on');-->
+<!--            console.log(eightOne);-->
+<!--        </script>-->
         <script>
-            const eight=document.querySelector('#notice');
-            console.log(eight.querySelector('.desc'));
-            const eightOne=eight.classList.toggle('on');
-            console.log(eightOne);
-        </script>
+            const notice=document.querySelector('#notice');
+            const onToggleBtn=document.querySelector('#onToggleBtn');
+
+            const descList=notice.querySelectorAll('.desc');
+            const onToggleHandler=()=>{
+                for (let desc of descList){
+                    desc.classList.toggle('on');
+                }
+            }
+            //onToggleBtn.onclick=onToggleHandler; //직접정의
+            onToggleBtn.addEventListener('click', onToggleHandler); //간접정의
+        </script> <!--선생님-->
     </section>
 
     <h3><strong>9번</strong></h3>
     <section id="q9">
         <h3>문제 9. 범위 한정으로 첫 아이템 선택</h3>
         <p class="task">지시: <code>.section</code> 요소를 시작점으로 내부 리스트의 첫 번째 <code>.item</code>에 클래스 <strong>selected</strong>를 추가하라. (전역 검색 금지)</p>
+<!--        <p> &lt;!&ndash; p>button#selectedBtn{첫번째 item 선택} &ndash;&gt;-->
+<!--            <button id="selectedBtn">첫번째 item 선택</button>-->
+<!--        </p>-->
         <section class="section">
-            <div class="toolbar"><button class="btn">A</button></div>
+            <div class="toolbar"><button class="btn btn-light">A</button></div>
             <ul class="list">
                 <li class="item">1</li>
                 <li class="item">2</li>
+                <li class="item">3</li>
             </ul>
         </section>
 
+<!--        <script>-->
+<!--            const nine=document.querySelector('.section');-->
+<!--            nine.querySelectorAll("li")[0].classList.add("selected");-->
+<!--        </script>-->
         <script>
-            const nine=document.querySelector('.section');
-            nine.querySelectorAll("li")[0].classList.add("selected");
+            //const q9=document.querySelector('#q9'); //이 줄은 없어도 됌. q9는 유일하니께!
 
-
-        </script>
+            const selectBtn=q9.querySelector('.section>.toolbar>.btn'); //구체화 시키는게 좋음
+            //const items=q9.querySelector('.list>.item');
+            const q9List=q9.querySelector('.list');
+            selectBtn.addEventListener('click', function (){
+                q9List.children[0].classList.toggle('selected');
+            })
+        </script> <!--선생님-->
     </section>
 
     <h3><strong>10번</strong></h3>
