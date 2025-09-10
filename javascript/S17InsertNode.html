@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>노드 수정 및 삽입</title>
+    <style>
+        body { font-family: system-ui, sans-serif; line-height: 1.5; }
+        .wrap { max-width: 720px; margin: 24px auto; }
+        .toolbar { display: flex; gap: 8px; flex-wrap: wrap; }
+        .list { border: 2px solid #333; border-radius: 8px; padding: 12px; margin-top: 12px; }
+        .item { padding: 8px 10px; border-radius: 6px; background: #f2f6ff; margin: 6px 0; display: flex; justify-content: space-between; align-items: center; }
+        .meta { font-size: 0.9em; color: #555; }
+        .badge { font-size: 0.8em; padding: 2px 6px; border-radius: 999px; background: #dde5ff; margin-left: 6px; }
+        .danger { background: #ffeaea; }
+        .target { background: #e9ffe9; }
+        .muted { color: #777; font-size: 0.9em; }
+        form input { padding: 6px 8px; }
+        form button { padding: 6px 10px; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+    <h2>일정 앱 과제 (노드 추가/삽입 중심)</h2>
+
+    <!-- 입력 폼 -->
+    <form id="scheduleForm" class="toolbar" onsubmit="return false;">
+        <input id="titleInput" type="text" placeholder="내용" />
+        <input id="dateInput" type="datetime-local" />
+        <input id="placeInput" type="text" placeholder="장소(옵션)" />
+        <p>
+            <button id="addAppend">1.append로 추가</button>
+            <button id="addPrepend">2.prepend로 추가</button>
+            <button id="addBefore">3.before로 추가</button>
+            <button id="addAfter">4.after로 추가</button>
+        </p>
+    </form>
+
+    <section class="list" id="scheduleList">
+        <div class="item target" id="anchorItem">
+            <div>
+                <strong>팀 회의</strong>
+                <span class="badge">기준(anchor)</span>
+                <div class="meta">2025-09-10 10:00 · 회의실 A</div>
+            </div>
+            <button class="btnRemove">삭제</button>
+        </div>
+        <div class="item">
+            <div>
+                <strong>리뷰 준비</strong>
+                <div class="meta">2025-09-12 14:00 · 온라인</div>
+            </div>
+            <button class="btnRemove">삭제</button>
+        </div>
+    </section>
+
+    <script>
+        //문제 1.
+        const scheduleForm=document.forms['scheduleForm'];
+        const scheduleList=document.querySelector('#scheduleList');
+
+        const makeItem=()=>{
+            const div=document.createElement('div');
+            div.className='item';
+            div.innerHTML=`
+            <div>${document.querySelector('#titleInput').value}
+                <div class="meta">${document.querySelector('#dateInput').value}
+                · ${document.querySelector('#placeInput').value}
+                </div>
+                </div>`
+            return div;
+        }
+        document.querySelector('#addAppend').onclick=()=>{
+            scheduleList.append(makeItem());
+        }
+
+
+
+        //문제 2.
+        document.querySelector('#addPrepend').onclick=()=>{
+            scheduleList.prepend(makeItem());
+        }
+
+
+
+        //문제 3.
+        document.querySelector('#addBefore').onclick=()=>{
+            scheduleList.before('공지: 내일 오전 9시 전사 공지');
+        }
+    </script>
+    <script>
+        //문제
+
+
+
+
+
+    </script>
+
+    </div>
+</body>
+</html>
