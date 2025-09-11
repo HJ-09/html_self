@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>노드 수정 및 삽입</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 720px;
+            margin: 24px auto;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .list {
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 12px;
+        }
+
+        .item {
+            padding: 8px 10px;
+            border-radius: 6px;
+            background: #f2f6ff;
+            margin: 6px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .meta {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .badge {
+            font-size: 0.8em;
+            padding: 2px 6px;
+            border-radius: 999px;
+            background: #dde5ff;
+            margin-left: 6px;
+        }
+
+        .danger {
+            background: #ffeaea;
+        }
+
+        .target {
+            background: #e9ffe9;
+        }
+
+        .muted {
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        form input {
+            padding: 6px 8px;
+        }
+
+        form button {
+            padding: 6px 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h2>일정 앱 과제 (노드 추가/삽입 중심)</h2>
+
+    <!-- 입력 폼 -->
+    <!--    //<form id="scheduleForm" class="toolbar" onsubmit="return false;">-->
+    <!--onsubmit="return false가 e.preventDefault랑 같음-->
+    <form id="scheduleForm" class="toolbar">
+        <input name="titleInput" type="text" placeholder="내용"/>
+        <input name="dateInput" type="datetime-local"/>
+        <input name="placeInput" type="text" placeholder="장소(옵션)"/>
+        <!--id말고 name으로 하면 폼의 필드처럼 쓸 수 잇슴-->
+        <p>
+            <button id="addAppend">1.append로 추가</button> <!--button type 안 쓰면 자동으로 submit-->
+            <button id="addPrepend" type="button">2.prepend로 추가</button> <!--type이 button이면 아무동작없음.-->
+            <button id="addBefore" type="button">3.before로 추가</button>
+            <button id="addAfter" type="button">4.after로 추가</button>
+        </p>
+    </form>
+
+
+    <style>
+        .d-none{
+            display: none;
+        }
+    </style>
+
+    <div class="item d-none" id="itemEx">
+        <div>
+            <strong class="title"></strong>
+            <div class="meta">
+                <span class="time"></span> ·
+                <span class="place"></span>
+            </div>
+        </div>
+        <button class="btnRemove">삭제</button>
+    </div> <!--4번 cloneNode 하기 위해서-->
+
+
+
+    <section class="list" id="scheduleList">
+        <div class="item target" id="anchorItem">
+            <div>
+                <strong>팀 회의</strong>
+                <span class="badge">기준(anchor)</span>
+                <div class="meta">2025-09-10 10:00 · 회의실 A</div>
+            </div>
+            <button class="btnRemove">삭제</button>
+        </div>
+        <div class="item">
+            <div>
+                <strong>리뷰 준비</strong>
+                <div class="meta">2025-09-12 14:00 · 온라인</div>
+            </div>
+            <button class="btnRemove">삭제</button>
+        </div>
+    </section>
+
+    <script>///문제 1. <<innerHTML로 풀어봄>>
+
+    //많이 쓸 것 같은건 선택자로 찾아두기
+    const scheduleForm = document.querySelector('#scheduleForm'); //스케줄 등록폼
+    //const addAppend=document.querySelector('#addAppend'); //스케줄 맨 뒤에 등록
+    //└─ addAppend는 type을 submit으로 해둬서 필요없음. 주석처리
+    const addPrepend = document.querySelector('#addPrepend'); //스케줄 맨 앞에 등록
+    const addBefore = document.querySelector('#addBefore'); //특정(기준) 스케줄 바로 앞에 등록
+    const addAfter = document.querySelector('#addAfter'); //특정(기준) 스케줄 바로 뒤에 등록
+    const scheduleList = document.querySelector('#scheduleList'); //일정 리스트
+
+    //┌─ submit 발생은 button이 아니라 scheduleForm임!
+    scheduleForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        //scheduleForm===e.target(currentTarget(form은 자식요소랑 상관없이 발생해서 가능), this(는 화살표함수가 아니어서 가능))
+
+        //만약 form의 input에 name이 아니라 id면 계속 선택자로 찾아야하는 불편함이 잇슴!
+        let title = this.titleInput.value;
+        let date = this.dateInput.value.replace('T', ' '); //T를 여백으로 바꾸겠다!
+        let place = this.placeInput.value;
+        //console.log(title, date, place);
+        if (!(title && date && place)) { //유효성 검사
+            alert('항목을 전부 입력하세요.');
+            return; //함수종료
+        }
+
+        //1. html 문자열 ⇒ insertAdjacentHTML
+        let html = `
+        <div class="item">
+            <div>
+                <strong>${title}</strong>
+                <div class="meta">${date} · ${place}</div>
+            </div>
+            <button class="btnRemove">삭제</button>
+        </div>`; //백틱(템플릿 리터럴)이 아니면 ${} 이거 쓸 수 업슴
+
+        scheduleList.insertAdjacentHTML('beforeend', html);
+    }) //근데 권장 x
+    </script>
+
+    <!--<script> //문제 2.
+    addPrepend.addEventListener('click', function (e) {
+        //button(click) ⇒ e.target===this===addPrepend
+        //console.log(e.target.form); //scheduleForm
+        //└─ (e.target.form) ⇒ button을 포함하는 form. scheduleForm이 없거나, button의 form이 수시로 바뀔 때 쓰면 됨.
+        //console.log(this); //button
+
+        //폼요소 데이터 불러오기
+        let title = e.target.form.titleInput.value;
+        let date = e.target.form.dateInput.value.replace('T', ' ');
+        let place = e.target.form.placeInput.value;
+
+        //아이템(노드객체) 만들기 == let html
+        let divItem = document.createElement('div');
+        divItem.className = 'item'; //class를 한 번에 처리하는게 className임. class가 꼭 있어야 디자인이 되니까 만들어둬야함.
+        let div = document.createElement('div');
+
+        let buttonRemove = document.createElement('button')
+        buttonRemove.className = 'btnRemove';
+        divItem.append(div, buttonRemove);
+
+        buttonRemove.append('삭제');
+
+        let strong = document.createElement('strong');
+        let divMeta = document.createElement('div');
+        divMeta.className = 'meta';
+        strong.append(title);
+        divMeta.append(`${date} · ${place}`);
+        div.append(strong, divMeta);
+        console.log(divItem);
+
+        scheduleList.prepend(divItem);
+    })
+    </script>-->
+
+    <script> // 문제 2. 함수로 분리하기(재사용성 증가시키기)
+        addPrepend.addEventListener('click', function (e){
+
+            let title=e.target.form.titleInput.value;
+            let date=e.target.form.dateInput.value.replace('T',' ');
+            let place=e.target.form.placeInput.value;
+
+            let divItem=createItemNode(title,date,place);
+
+            scheduleList.prepend(divItem);
+        })
+
+        /*<div class="item">
+                    <div>
+                        <strong>${title}</strong>
+                        <div class="meta">${date} · ${place}</div>
+                    </div>
+                    <button class="btnRemove">삭제</button>
+                </div> 해당 노드개체를 만들어서 반환하는 함수*/
+
+        function createItemNode(title, date, place){
+            let divItem=document.createElement('div');
+            divItem.className='item';
+            let div=document.createElement('div');
+            let buttonRemove=document.createElement('button')
+            buttonRemove.className='btnRemove';
+            divItem.append(div,buttonRemove);
+
+            buttonRemove.append('삭제');
+
+            let strong=document.createElement('strong');
+            let divMeta=document.createElement('div');
+            divMeta.className='meta';
+            strong.append(title);
+            divMeta.append(`${date} · ${place}`);
+            div.append(strong, divMeta);
+            return divItem;
+        }
+
+    </script>
+
+
+    <script> //문제 3.
+    addBefore.addEventListener('click', function (e){
+
+        let anchorItem=document.querySelector('#anchorItem'); //함수 안에 있는 이유 ⇒ 실행할 때마다 새롭게 찾기 때문에 이런 경우엔 안에 있는게 적합
+        //함수 밖에 있으면 처음 찾은 값 고정임!
+
+        let title=this.form.titleInput.value;
+        let date=e.target.form.dateInput.value.replace('T',' ');
+        let place=this.form.placeInput.value;
+        //console.log(title,date,place);
+
+        let divItem=createItemNode(title,date,place);
+        anchorItem.before(divItem);
+
+        //anchorItem.after(divItem); //이렇게 해도 됌!
+
+    })
+
+    </script>
+
+    <script> //문제 4. cloneNode로 풀어볼게~ cloneNode 쓰려면 일단 브라우저가 한 번 출력해야함!
+    const itemEx=document.querySelector('#itemEx');
+    addAfter.addEventListener('click', function (e){
+        const anchorItem=document.querySelector('#anchorItem');
+
+        const item=itemEx.cloneNode(true); //false이거나 공백으로 두면 부모객체만 복제함. deep하게 복사하려고 true.
+        //console.log(itemEx===item); //false ⇒ 복사성공
+
+        item.removeAttribute('id'); //id 식별자를 지워야함. 왜..?
+        item.classList.remove('d-none'); //보여야하니까 d-none만 지움
+
+        const titleNode=item.querySelector('.title');
+        const timeNode=item.querySelector('.time');
+        const placeNode=item.querySelector('.place');
+
+        let title=this.form.titleInput.value;
+        let time=this.form.dateInput.value.replace('T',' ');
+        let place=this.form.placeInput.value;
+
+        titleNode.append(title)
+        timeNode.append(time)
+        placeNode.append(place)
+
+        anchorItem.after(item);
+
+    })
+    </script>
+
+    <!--<script> //문제 4. 함수로 분리
+    const itemEx=document.querySelector('#itemEx');
+    const itemCopy=function (title,time,place) {
+        const item=itemEx.cloneNode(true);
+
+        item.removeAttribute('id');
+        item.classList.remove('d-none');
+
+        const titleNode=item.querySelector('.title');
+        const timeNode=item.querySelector('.time');
+        const placeNode=item.querySelector('.place');
+
+        titleNode.append(title)
+        timeNode.append(time)
+        placeNode.append(place)
+
+        return item;
+    }
+
+    addAfter.addEventListener('click', function (e){
+        const anchorItem=document.querySelector('#anchorItem');
+
+        let title=this.form.titleInput.value;
+        let time=this.form.dateInput.value.replace('T',' ');
+        let place=this.form.placeInput.value;
+
+        anchorItem.after(itemCopy(title,time,place));
+
+    })
+    </script>-->
+
+</div>
+</body>
+</html>
