@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="posts"></ul>
+
+    <script>
+        const postsUl=document.querySelector("#posts");
+
+        const loadPosts=()=>{
+            let url="https://jsonplaceholder.typicode.com/posts";
+            const req=new XMLHttpRequest();
+            req.open("GET",url,true);
+            req.send();
+            req.onload=()=>{
+                let status=req.status;
+                if (status===200){
+                    let postsJson=req.responseText;
+                    let posts=JSON.parse(postsJson);
+                    let html="";
+                    for (let post of posts){
+                        html+=`
+                        <li>
+                        ${post.title}
+                        </li>
+                        `
+                    }
+                    postsUl.innerHTML=html;
+                }
+            }
+        }
+        loadPosts();
+    </script>
+</body>
+</html>

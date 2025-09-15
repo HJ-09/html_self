@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script> //문제 1.
+    let num=[1,2,3,4,5]
+    for (let n=0; n<num.length; n++){
+        console.log(num[n])
+    }
+    </script>
+
+    <script> //문제 2.
+    let fruit=['사과','바나나','포도']
+    for (let f of fruit){
+        console.log(f)
+    }
+    </script>
+
+    <script> //문제 3.
+    let three=['a','b','c']
+    for (let t in three){
+        console.log(t, three[t])
+    }
+    </script>
+
+    <script> //문제 4.
+    let num2=[10,20,30]
+    num2.forEach((n)=>console.log('점수: ',n))
+    </script>
+
+    <script> //문제 5.
+    let arr=[1,2,3,4,5]
+    let arr2=arr
+        .map(n=>n*n)
+    console.log(arr2)
+    </script>
+
+    <script> //문제 6.
+    let six=[12,5,8,130,44]
+    let s=six
+        .filter(n=>n>=10)
+
+    console.log(s)
+    </script>
+
+    <script> //문제 7.
+    let seven=[1,2,3,4]
+    let ss=seven
+        .reduce((a,b)=>a+b,0);
+    console.log(ss)
+    </script>
+
+    <script> //문제 8.
+    let eight=[1,3,5,7,9]
+    let e=eight
+        .some((item)=>item%2===0)
+    console.log(e)
+    </script>
+
+    <script> //문제 9.
+    let nine=[2,4,6,8]
+    let ni=nine
+        .every((item)=>item%2===0)
+    console.log(ni)
+    </script>
+
+    <script> //문제 10.
+    let ten=['철수','영희','민수']
+    let tt=ten
+        .find((item)=>item==='영희')
+    console.log(tt)
+
+    let yh=ten.findIndex((item)=>item==='영희')
+    console.log(yh);
+    </script>
+</body>
+</html>
