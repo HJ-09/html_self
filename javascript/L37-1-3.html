@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>sign-up</title>
+    <link rel="stylesheet" href="/src/bootstrap-5.3.7/dist/css/bootstrap.css">
+    <script defer src="/src/bootstrap-5.3.7/dist/js/bootstrap.bundle.js"></script>
+
+    <style>
+        body {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+        }
+
+        .nav-link {
+            font-size: 1.2rem;
+        }
+
+        /*.sign-up-box{*/
+        /*    !*flex-direction: column;*!*/
+        /*    display: flex;*/
+        /*    justify-content: center;*/
+        /*    align-items: center;*/
+        /*    border: 1px solid #dd1e7f;*/
+
+        /*    !*min-height: calc(100vh - 70px);*!*/
+        /*    padding: 20px;*/
+        /*    !*box-sizing: border-box;*!*/
+        /*}*/
+
+        .page-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 70px); /* navbar 높이 빼기 */
+        }
+
+        .sign-up-box {
+            border: 1px solid #dd1e7f;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .sign-up-box input {
+            margin: 8px 0;
+        }
+
+        .shadowed {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, .2);
+        }
+
+    </style>
+</head>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">KOSMO</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="L37-1-2.html">login</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        category
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">service</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="page-content">
+    <div class="sign-up-box shadowed">
+        <h3 class="title">SIGN-UP</h3>
+        <form>
+            <label>ID</label>
+            <input type="text" name="id"><br>
+
+            <label>PW</label>
+            <input type="password" name="pw"><br>
+
+            <label>email</label>
+            <input type="email" name="email"><br>
+
+            <button>회원가입</button>
+
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

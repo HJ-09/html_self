@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CIVIL-e</title>
+    <link rel="stylesheet" href="/src/bootstrap-5.3.7/dist/css/bootstrap.css">
+    <script defer src="/src/bootstrap-5.3.7/dist/js/bootstrap.bundle.js"></script>
+    <style>
+        nav {
+            font-family: "Kirang Haerang", system-ui;
+            /*font-size: 20px;*/
+        }
+        .navbar {
+            height: 100px;
+        }
+        section { font-family: "Grandiflora One", cursive; }
+        header { background: #333; color: white; padding: 1rem; text-align: center; }
+        .products { display: flex; gap: 20px; padding: 20px; }
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        .product img { width: 100%; }
+        .product button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: dodgerblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .product button:hover { background: navy; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">CIVIL^e</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Item
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">경계석</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">고객센터</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+<section class="products">
+    <div class="product">
+        <img src="https://shop.g2b.go.kr/static/CataAttach/XezCatalog/XZMOK/move_image/2021/08/23/b55dd524-7f32-4d96-9323-59d99e3c920e.jpg?postfix=2025_09_16" alt="자연석경계석">
+    <h4>자연석경계석</h4>
+        <p>₩4,150</p>
+        <button>장바구니 담기</button>
+    </div>
+    <div class="product">
+        <img src="https://shop.g2b.go.kr/static/CataAttach/XezCatalog/XZMOK/item_image/2016/01/06/20160106115636-10.jpg?postfix=2025_09_16" alt="상품2">
+        <h4>자연선경계석</h4>
+        <p>₩4,780</p>
+        <button>장바구니 담기</button>
+    </div>
+</section>
+</body>
+</html>
