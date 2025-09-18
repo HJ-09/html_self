@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>L39 Self</title>
 </head>
 <body>
-$END$
+<p>jackw의 장바구니</p>
+<button id="loadCartsBtn">jackw 장바구니 구경</button>
+<div id="cartsWrap"></div>
+
+<script>
+    const username='jackw'
+    const password='jackwpass'
+    const loadCartsBtn=document.querySelector('#loadCartsBtn')
+    const cartsWrap=document.querySelector('#cartsWrap')
+
+    const loadCarts=()=>{
+        let userId=null;
+        let url='https://dummyjson.com/user/login'
+
+        const userObj={
+            'username':username,
+            'password':password
+        }
+
+        const req=new XMLHttpRequest();
+        req.open('post',url,true);
+        req.setRequestHeader('Content-type','application/json');
+        req.send(JSON.stringify(userObj));
+    }
+
+
+    loadCartsBtn.addEventListener('click',loadCarts);
+</script>
+
+
+
+
 </body>
 </html>
