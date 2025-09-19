@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>L39 Self 2</title>
+</head>
+<body>
+<p>게시글 모음</p>
+<button id="loadPostsBtn">게시글 보러가기</button>
+<div id="postsWrap"></div>
+
+<script>
+    const loadPostsBtn=document.querySelector('#loadPostsBtn')
+    const postsWrap=document.querySelector('#postsWrap')
+
+    const loadPosts=()=>{
+        let url='https://dummyjson.com/post'
+
+        const req=new XMLHttpRequest();
+        req.open('get',url,true);
+        req.send();
+        req.onload=()=>{
+            if (req.status !== 200) return;
+            //postsWrap.innerHTML=JSON.parse(req.responseText); -> 객체(JSON.parse(req.responseText))를 통째로 넣으면 화면에 [object Object]만 뜸.
+
+            //1. 응답을 JS 객체로 변환
+            const data=JSON.parse(req.responseText);
+
+            //2. posts 배열 꺼내기
+            const posts=data.posts;
+
+            //3. 문자열 누적해서 innerHTML로 넣기
+            let html=''
+            for (let post of posts){
+                html +=`<p><strong>${post.title}</strong><br>${post.body}</p>`
+            }
+            postsWrap.innerHTML=html;
+        }
+    }
+
+
+    loadPostsBtn.addEventListener('click',loadPosts);
+</script>
+
+
+
+
+</body>
+</html>
